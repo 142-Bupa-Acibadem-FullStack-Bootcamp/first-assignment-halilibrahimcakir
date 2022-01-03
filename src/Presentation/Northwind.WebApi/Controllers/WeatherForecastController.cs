@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Northwind.Data.Context;
+using Northwind.Models.Models;
+using Northwind.Services.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +20,12 @@ namespace Northwind.WebApi.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IProductService _productService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IProductService productService)
         {
             _logger = logger;
+            _productService = productService;
         }
 
         [HttpGet]
